@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhakti Marg - App Guide</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --surface-glass: rgba(255, 255, 255, 0.03);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --text-primary: #ededed;
-            --text-secondary: #a1a1aa;
-            --accent: #10b981; 
+            /* Exact Colors from Theme.kt */
+            --mesh-green: #E4F4E4;
+            --mesh-pink: #FBE4EA;
+            --mesh-blue: #E4F0FB;
+            --mesh-yellow: #FFF5CC;
+            --text-primary: #1C1C1E;
+            --text-secondary: #8E8E93;
+            --action-dark: #2C2C2E;
+            --card-glass: rgba(255, 255, 255, 0.8);
+            --border-glass: rgba(255, 255, 255, 1);
         }
 
         body {
-            background-color: var(--bg-dark);
+            /* Animated Pastel Mesh Gradient */
+            background-color: var(--mesh-pink);
+            background-image: 
+                radial-gradient(at 0% 0%, var(--mesh-green) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, var(--mesh-blue) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, var(--mesh-yellow) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, var(--mesh-pink) 0px, transparent 50%);
+            background-attachment: fixed;
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            -webkit-font-smoothing: antialiased;
         }
 
         .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
@@ -32,49 +43,63 @@
             justify-content: center;
             gap: 16px;
             margin-bottom: 40px;
-            padding: 12px;
-            background: var(--surface-glass);
+            padding: 8px;
+            background: var(--card-glass);
             border: 1px solid var(--border-glass);
             border-radius: 50px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 8px 16px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 10px 20px;
             border-radius: 50px;
             transition: all 0.2s ease;
         }
 
-        .nav-links a.active { background: var(--accent); color: #fff; }
-        .nav-links a:hover:not(.active) { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+        .nav-links a.active { background: var(--action-dark); color: #fff; }
+        .nav-links a:hover:not(.active) { color: var(--text-primary); background: rgba(255,255,255,0.9); }
 
-        header { margin-bottom: 60px; text-align: center; }
-        h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 8px; background: linear-gradient(to right, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
+        header { margin-bottom: 50px; text-align: center; }
+        h1 { font-size: 2.8rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 8px; color: var(--text-primary); }
+        .subtitle { color: var(--text-secondary); font-size: 1.1rem; font-weight: 600; }
 
         .bento-card {
-            background: var(--surface-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
+            background: var(--card-glass);
+            border: 2px solid var(--border-glass);
+            border-radius: 28px;
             padding: 32px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(12px);
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .bento-card:hover { border-color: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+        .bento-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06); }
 
-        h2 { font-size: 1.25rem; font-weight: 600; margin-top: 0; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-        .icon-box { width: 32px; height: 32px; border-radius: 8px; background: rgba(16, 185, 129, 0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 16px; }
-        p { color: var(--text-secondary); margin: 0 0 16px 0; font-size: 0.95rem; }
-        p:last-child { margin-bottom: 0; }
-        .highlight { color: var(--text-primary); font-weight: 600; }
+        h2 { font-size: 1.2rem; font-weight: 800; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; color: var(--text-primary); }
+        
+        .icon-box { 
+            width: 36px; 
+            height: 36px; 
+            border-radius: 50%; 
+            background: rgba(44, 44, 46, 0.08); /* ActionDark with Alpha */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 16px; 
+        }
+        
+        p { color: var(--text-secondary); margin: 0; font-size: 0.95rem; line-height: 1.7; font-weight: 400; }
+        .highlight { color: var(--action-dark); font-weight: 800; }
 
-        footer { margin-top: 60px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; border-top: 1px solid var(--border-glass); padding-top: 32px; }
+        footer { margin-top: 60px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; padding-top: 32px; }
     </style>
 </head>
 <body>
@@ -82,38 +107,38 @@
 <div class="container">
     <nav class="nav-links">
         <a href="index.html" class="active">App Guide</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
     </nav>
 
     <header>
-        <h1>Bhakti Marg Guide</h1>
+        <h1>Bhakti Marg</h1>
         <div class="subtitle">Master your digital spiritual journey.</div>
     </header>
 
     <div class="bento-card">
         <h2><div class="icon-box">🖼️</div> Instant Darshan Updates</h2>
-        <p>We utilize a zero-drain edge network for Daily Darshan. The app does not constantly check the internet in the background. Instead, when a new Darshan is uploaded, you receive a silent push notification that updates the images instantly the moment you open the app, saving your battery.</p>
+        <p>We utilize a highly optimized edge network for Daily Darshan. The app does not constantly drain your battery checking the internet. Instead, when a new Darshan is uploaded, you receive a silent push notification that prepares the images for you instantly.</p>
     </div>
 
     <div class="bento-card">
         <h2><div class="icon-box">📿</div> The Digital Mala Engine</h2>
-        <p>The Mala screen registers a Jap anywhere you tap on the screen. To help you maintain inner focus, the device provides a subtle haptic vibration per tap. Upon reaching the 108 threshold (one full Mala), the vibration pattern changes distinctly so you know a round is complete without opening your eyes.</p>
+        <p>The Mala screen registers a Jap anywhere you tap on the screen. To help you maintain inner focus without looking at your phone, the device provides a subtle haptic vibration per tap. Upon reaching the 108 threshold, the vibration pattern changes distinctly.</p>
     </div>
 
     <div class="bento-card">
         <h2><div class="icon-box">🔥</div> Auto-Healing Streaks</h2>
-        <p>Your daily streak updates automatically at Midnight. If you acquire a new phone, simply connect your Google Account in the Profile tab. Our system will download your vault and restore your timeline, ensuring your unbroken devotion continues seamlessly.</p>
+        <p>Your daily streak updates automatically at Midnight. If you acquire a new phone, simply connect your Google Account in the Cloud Vault tab. Our system will download your backup and restore your timeline, ensuring your unbroken devotion continues.</p>
     </div>
 
     <div class="bento-card">
         <h2><div class="icon-box">🔒</div> App PIN & Security</h2>
-        <p>If you forget your App PIN, tapping 'Forgot PIN' prompts a Biometric (Fingerprint/Face) check. If no biometrics are set up on your device, it will trigger an Emergency Factory Reset. This protects your privacy by clearing the app data, allowing you to restore it fresh from your Cloud Vault.</p>
+        <p>If you forget your App PIN, tapping 'Forgot PIN' prompts a Biometric check. If no biometrics are set up, it will trigger an Emergency Factory Reset to protect your privacy. You can then safely restore your data from your Cloud Vault.</p>
     </div>
 
     <div class="bento-card">
         <h2><div class="icon-box">📖</div> Managing Scriptures</h2>
-        <p>The 'My Paath' library organizes sacred texts into categories. You can download texts directly or upload your own PDFs. Our engine is highly optimized, but very large PDFs may take a moment to load depending on your device's memory.</p>
+        <p>The 'My Paath' library organizes sacred texts into categories. You can download texts directly or upload your own local PDFs. Our engine is highly optimized, but exceptionally large PDFs may take a moment to load depending on your device's memory.</p>
     </div>
 
     <div class="bento-card">
