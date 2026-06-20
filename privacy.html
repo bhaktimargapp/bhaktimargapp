@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhakti Marg - Privacy Policy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --surface-glass: rgba(255, 255, 255, 0.03);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --text-primary: #ededed;
-            --text-secondary: #a1a1aa;
-            --accent: #10b981; 
+            var(--mesh-green): #E4F4E4;
+            --mesh-pink: #FBE4EA;
+            --mesh-blue: #E4F0FB;
+            --mesh-yellow: #FFF5CC;
+            --text-primary: #1C1C1E;
+            --text-secondary: #8E8E93;
+            --action-dark: #2C2C2E;
+            --card-glass: rgba(255, 255, 255, 0.8);
+            --border-glass: rgba(255, 255, 255, 1);
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: #FBE4EA;
+            background-image: 
+                radial-gradient(at 0% 0%, #E4F4E4 0px, transparent 50%),
+                radial-gradient(at 100% 0%, #E4F0FB 0px, transparent 50%),
+                radial-gradient(at 100% 100%, #FFF5CC 0px, transparent 50%),
+                radial-gradient(at 0% 100%, #FBE4EA 0px, transparent 50%);
+            background-attachment: fixed;
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            -webkit-font-smoothing: antialiased;
         }
 
         .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
@@ -32,31 +41,34 @@
             justify-content: center;
             gap: 16px;
             margin-bottom: 40px;
-            padding: 12px;
-            background: var(--surface-glass);
+            padding: 8px;
+            background: var(--card-glass);
             border: 1px solid var(--border-glass);
             border-radius: 50px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 8px 16px; border-radius: 50px; transition: all 0.2s ease; }
-        .nav-links a.active { background: var(--accent); color: #fff; }
-        .nav-links a:hover:not(.active) { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 800; font-size: 0.85rem; padding: 10px 20px; border-radius: 50px; transition: all 0.2s ease; }
+        .nav-links a.active { background: var(--action-dark); color: #fff; }
+        .nav-links a:hover:not(.active) { color: var(--text-primary); background: rgba(255,255,255,0.9); }
 
-        header { margin-bottom: 60px; text-align: center; }
-        h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 8px; background: linear-gradient(to right, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
+        header { margin-bottom: 50px; text-align: center; }
+        h1 { font-size: 2.8rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 8px; color: var(--text-primary); }
+        .subtitle { color: var(--text-secondary); font-size: 1.1rem; font-weight: 600; }
 
-        .bento-card { background: var(--surface-glass); border: 1px solid var(--border-glass); border-radius: 24px; padding: 32px; margin-bottom: 24px; backdrop-filter: blur(12px); transition: transform 0.2s ease, border-color 0.2s ease; }
-        .bento-card:hover { border-color: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+        .bento-card { background: var(--card-glass); border: 2px solid var(--border-glass); border-radius: 28px; padding: 32px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .bento-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06); }
 
-        h2 { font-size: 1.25rem; font-weight: 600; margin-top: 0; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-        .icon-box { width: 32px; height: 32px; border-radius: 8px; background: rgba(16, 185, 129, 0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; }
-        p { color: var(--text-secondary); margin: 0 0 16px 0; font-size: 0.95rem; }
+        h2 { font-size: 1.2rem; font-weight: 800; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; color: var(--text-primary); }
+        .icon-box { width: 36px; height: 36px; border-radius: 50%; background: rgba(44, 44, 46, 0.08); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        
+        p { color: var(--text-secondary); margin: 0 0 16px 0; font-size: 0.95rem; line-height: 1.7; font-weight: 400; }
         p:last-child { margin-bottom: 0; }
-        .highlight { color: var(--text-primary); font-weight: 600; }
+        .highlight { color: var(--action-dark); font-weight: 800; }
 
-        footer { margin-top: 60px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; border-top: 1px solid var(--border-glass); padding-top: 32px; }
+        footer { margin-top: 60px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; padding-top: 32px; }
     </style>
 </head>
 <body>
@@ -64,8 +76,8 @@
 <div class="container">
     <nav class="nav-links">
         <a href="index.html">App Guide</a>
-        <a href="privacy.html" class="active">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html" class="active">Privacy</a>
+        <a href="terms.html">Terms</a>
     </nav>
 
     <header>
@@ -73,40 +85,39 @@
         <div class="subtitle">Our commitment to your spiritual privacy.</div>
     </header>
 
-    <div class="bento-card" style="border-color: rgba(16, 185, 129, 0.3);">
+    <div class="bento-card">
         <h2><div class="icon-box">❤️</div> Our Mission: Seva</h2>
         <p>Bhakti Marg is offered as a selfless digital Seva. To ensure this platform remains accessible, we operate on a strict Zero-Cost Infrastructure. Your spiritual journey is exclusively yours.</p>
     </div>
 
     <div class="bento-card">
         <h2><div class="icon-box">1</div> 100% Local Storage</h2>
-        <p>Your daily Japs, sacred notes, and milestones are stored <span class="highlight">strictly within your device's internal memory</span>. We do not operate proprietary backend servers to harvest or read your personal spiritual data.</p>
+        <p>We do not own or operate external databases. Your daily Japs, sacred notes, and milestones are saved <span class="highlight">strictly within your device's internal memory</span>. We cannot see, read, or sell your personal spiritual data.</p>
     </div>
 
     <div class="bento-card">
-        <h2><div class="icon-box">2</div> Google Drive Cloud Sync</h2>
-        <p>If you choose to enable the Cloud Backup feature, Bhakti Marg will create a secure, encrypted backup file in a hidden, app-specific directory within your personal Google Drive account. The app requests restricted scope access meaning it can <span class="highlight">only access the specific file it creates</span>. It cannot read your personal files, emails, or photos.</p>
+        <h2><div class="icon-box">2</div> Google Drive Backups</h2>
+        <p>If you enable Cloud Sync, the app creates a secure backup file in a hidden folder inside your personal Google Drive. The app uses a restricted scope and can <span class="highlight">ONLY access the specific backup file it creates</span>. We cannot read your emails or view your personal photos.</p>
     </div>
 
     <div class="bento-card">
-        <h2><div class="icon-box">3</div> Push Notifications (FCM)</h2>
+        <h2><div class="icon-box">3</div> Push Notifications</h2>
         <p>We utilize Firebase Cloud Messaging (FCM) to deliver silent updates to your device (such as notifying the app that a new Daily Darshan is available). Firebase generates an anonymous instance ID to route these messages. We do not link this ID to your personal identity.</p>
     </div>
 
     <div class="bento-card">
-        <h2><div class="icon-box">4</div> Third-Party Services & Advertising</h2>
-        <p>To sustain our zero-cost infrastructure, Bhakti Marg integrates Google AdMob. AdMob uses your device's Advertising ID exclusively for advertising and analytics. <span class="highlight">This data is handled exclusively by Google</span> and is not linked to any Personally Identifiable Information (PII) by our application. You can manage your ad personalization preferences in your Android OS settings.</p>
+        <h2><div class="icon-box">4</div> Ads & Analytics</h2>
+        <p>We use Google AdMob to keep the app free. These services may collect anonymous device identifiers and crash logs to serve relevant ads and improve app stability. <span class="highlight">This data is handled exclusively by Google</span> and is not linked to your personal identity. You can manage ad personalization in your Android OS settings.</p>
     </div>
 
-    <div class="bento-card" style="border-color: rgba(239, 68, 68, 0.3);">
-        <h2><div class="icon-box" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">5</div> Data Deletion Instructions</h2>
-        <p>As per Google Play Developer Policies, you have the absolute right to delete your data at any time. Because your data is stored locally and on your personal Google Drive, you have complete control over its destruction.</p>
-        <p><span class="highlight">To delete your data:</span> Open the Bhakti Marg app > Navigate to the Profile Tab > Scroll to the bottom > Tap <strong>"Delete All Data"</strong>.</p>
-        <p>This action will permanently wipe your local device database and securely delete the backup file from your Google Drive. This action cannot be undone.</p>
+    <div class="bento-card" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(255, 255, 255, 0.9);">
+        <h2><div class="icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">5</div> Your Right to Deletion</h2>
+        <p>You have full control over your data. By navigating to your Profile and selecting <span class="highlight">'Delete All Data'</span>, the app will instantly erase all local records and permanently remove the backup file from your Google Drive.</p>
+        <p>This action cannot be undone.</p>
     </div>
 
     <footer>
-        <p>If you have any questions regarding this policy, please contact us at: <strong>bhaktimargapp@gmail.com</strong></p>
+        <p>Contact us at: <strong>bhaktimargapp@gmail.com</strong></p>
         <p>Effective Date: June 2026</p>
     </footer>
 </div>
