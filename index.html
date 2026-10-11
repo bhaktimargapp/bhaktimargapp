@@ -1,155 +1,373 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhakti Marg - App Guide</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Bhakti Marg — Digital Spiritual Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        :root {
-            /* Exact Colors from Theme.kt */
-            --mesh-green: #E4F4E4;
-            --mesh-pink: #FBE4EA;
-            --mesh-blue: #E4F0FB;
-            --mesh-yellow: #FFF5CC;
-            --text-primary: #1C1C1E;
-            --text-secondary: #8E8E93;
-            --action-dark: #2C2C2E;
-            --card-glass: rgba(255, 255, 255, 0.8);
-            --border-glass: rgba(255, 255, 255, 1);
-        }
+      :root {
+        --bg-dark: #050505;
+        --text-main: #FFFFFF;
+        --text-muted: #A1A1AA;
+        --accent: #E4F4E4;
+        --glass-bg: rgba(15, 15, 15, 0.6);
+        --glass-border: rgba(255, 255, 255, 0.08);
+      }
 
-        body {
-            /* Animated Pastel Mesh Gradient */
-            background-color: var(--mesh-pink);
-            background-image: 
-                radial-gradient(at 0% 0%, var(--mesh-green) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, var(--mesh-blue) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, var(--mesh-yellow) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, var(--mesh-pink) 0px, transparent 50%);
-            background-attachment: fixed;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        cursor: none; /* Hide default cursor */
+      }
 
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
 
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 40px;
-            padding: 8px;
-            background: var(--card-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 50px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
+      /* 1. Dark Mesh Grid Background */
+      .grid-bg {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background-size: 40px 40px;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        z-index: -2;
+        mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+        -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+      }
 
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.85rem;
-            padding: 10px 20px;
-            border-radius: 50px;
-            transition: all 0.2s ease;
-        }
+      /* 2. Sharp Diamond Cursor & Crisp Trailing Ring */
+      .cursor-diamond {
+        position: fixed; top: 0; left: 0;
+        width: 8px; height: 8px;
+        background: var(--text-main);
+        transform: translate(-50%, -50%) rotate(45deg);
+        pointer-events: none;
+        z-index: 10000;
+        mix-blend-mode: difference;
+        transition: background 0.2s, transform 0.1s;
+      }
+      .cursor-ring {
+        position: fixed; top: 0; left: 0;
+        width: 36px; height: 36px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
+        will-change: transform;
+      }
 
-        .nav-links a.active { background: var(--action-dark); color: #fff; }
-        .nav-links a:hover:not(.active) { color: var(--text-primary); background: rgba(255,255,255,0.9); }
+      /* Typography */
+      h1 {
+        font-size: clamp(3rem, 5.5vw, 5rem);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+        max-width: 600px;
+        margin-bottom: 16px;
+      }
+      h1 em {
+        font-family: "Instrument Serif", serif;
+        font-weight: 400; font-style: italic;
+        color: var(--text-muted);
+      }
+      p.lede {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        max-width: 480px;
+        line-height: 1.6;
+        font-weight: 400;
+      }
 
-        header { margin-bottom: 50px; text-align: center; }
-        h1 { font-size: 2.8rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 8px; color: var(--text-primary); }
-        .subtitle { color: var(--text-secondary); font-size: 1.1rem; font-weight: 600; }
+      /* Slim, Elegant Header */
+      header {
+        position: fixed;
+        top: 24px; left: 50%; transform: translateX(-50%);
+        width: 90%; max-width: 1200px;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 16px 10px 24px; /* Slim padding */
+        border-radius: 100px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        animation: slideDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .logo {
+        font-weight: 700; font-size: 16px;
+        text-decoration: none; color: var(--text-main);
+        display: flex; align-items: center; gap: 10px;
+      }
+      .logo img {
+        width: 28px; height: 28px; /* Perfectly sized icon */
+        border-radius: 50%;
+        border: none; /* Removed white border */
+      }
 
-        .bento-card {
-            background: var(--card-glass);
-            border: 2px solid var(--border-glass);
-            border-radius: 28px;
-            padding: 32px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+      nav { display: flex; gap: 8px; }
+      nav a {
+        text-decoration: none; color: var(--text-muted);
+        font-weight: 500; font-size: 13px;
+        padding: 8px 16px; border-radius: 100px; transition: 0.3s;
+      }
+      nav a:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.05); }
 
-        .bento-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06); }
+      /* Fitted Dark Navbar Button */
+      .nav-btn-dark {
+        background: #1A1A1A;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        font-size: 13px; font-weight: 600;
+        text-decoration: none;
+        display: inline-flex; align-items: center; gap: 8px;
+        transition: all 0.3s ease;
+      }
+      .nav-btn-dark:hover {
+        background: #2A2A2A;
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+      }
+      .nav-btn-dark svg { width: 14px; height: 14px; }
 
-        h2 { font-size: 1.2rem; font-weight: 800; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; color: var(--text-primary); }
-        
-        .icon-box { 
-            width: 36px; 
-            height: 36px; 
-            border-radius: 50%; 
-            background: rgba(44, 44, 46, 0.08); /* ActionDark with Alpha */
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 16px; 
-        }
-        
-        p { color: var(--text-secondary); margin: 0; font-size: 0.95rem; line-height: 1.7; font-weight: 400; }
-        .highlight { color: var(--action-dark); font-weight: 800; }
+      /* Main Action Buttons */
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        padding: 14px 26px; border-radius: 100px;
+        font-weight: 600; font-size: 14px; text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .btn-primary {
+        background: #FFFFFF; color: #000000;
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
+      }
+      .btn-glass {
+        background: rgba(255,255,255,0.03); color: var(--text-main);
+        border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px);
+      }
+      .btn-glass:hover {
+        background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3);
+        transform: translateY(-3px);
+      }
 
-        footer { margin-top: 60px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; padding-top: 32px; }
+      /* Hero Layout */
+      .hero {
+        display: flex; align-items: center; justify-content: space-between;
+        min-height: 100vh; max-width: 1200px; margin: 0 auto;
+        padding: 100px 24px 40px; perspective: 1500px;
+      }
+      .hero-content {
+        flex: 1; max-width: 540px; z-index: 10;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      }
+      .badge {
+        display: inline-block; padding: 6px 14px; border-radius: 100px;
+        background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+        font-size: 12px; font-weight: 500; color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+      
+      .contact-info { margin-top: 32px; font-size: 13px; color: var(--text-muted); font-weight: 400; }
+      .contact-info a { color: var(--text-main); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 2px; transition: 0.2s; }
+      .contact-info a:hover { border-color: #fff; }
+
+      /* 3D Interactive Phone Model */
+      .phone-container {
+        flex: 1; display: flex; justify-content: flex-end; align-items: center;
+        transform-style: preserve-3d;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+      }
+      .phone {
+        width: 300px; height: 620px;
+        border-radius: 44px;
+        background: #000;
+        border: 6px solid #1A1A1A;
+        box-shadow: 
+          0 0 0 1px rgba(255, 255, 255, 0.1),
+          0 40px 80px rgba(0, 0, 0, 0.6),
+          -20px -20px 60px rgba(255, 255, 255, 0.02);
+        position: relative;
+        transform-style: preserve-3d;
+        will-change: transform;
+      }
+      /* Phone Notch */
+      .phone::before {
+        content: ""; position: absolute;
+        top: 12px; left: 50%; transform: translateX(-50%);
+        width: 90px; height: 26px; background: #000;
+        border-radius: 20px; z-index: 20;
+      }
+      /* Subtle Screen Glare */
+      .phone::after {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
+        border-radius: 38px; z-index: 15; pointer-events: none;
+      }
+      /* App Screen Image */
+      .app-screen {
+        width: 100%; height: 100%;
+        border-radius: 38px;
+        background-image: url("home_screen.jpeg");
+        background-size: cover; background-position: top center; background-repeat: no-repeat;
+        position: relative; z-index: 10;
+      }
+
+      /* Animations */
+      @keyframes slideDown { from { opacity: 0; transform: translate(-50%, -30px); } to { opacity: 1; transform: translate(-50%, 0); } }
+      @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+      @media (max-width: 968px) {
+        .hero { flex-direction: column; text-align: center; gap: 60px; justify-content: center; padding-top: 120px; }
+        .hero-content { max-width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .hero-actions { justify-content: center; }
+        .phone-container { justify-content: center; }
+        nav { display: none; } /* Hide links on mobile */
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- Background Grid -->
+    <div class="grid-bg"></div>
 
-<div class="container">
-    <nav class="nav-links">
-        <a href="index.html" class="active">App Guide</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-    </nav>
+    <!-- Crisp Custom Cursor -->
+    <div class="cursor-diamond"></div>
+    <div class="cursor-ring"></div>
 
     <header>
-        <h1>Bhakti Marg</h1>
-        <div class="subtitle">Master your digital spiritual journey.</div>
+      <a href="index.html" class="logo hover-target">
+        <img src="icon.png" alt="Bhakti Marg" />
+        Bhakti Marg
+      </a>
+      <nav>
+        <a href="app_guide.html" class="hover-target">App Guide</a>
+        <a href="privacy.html" class="hover-target">Privacy</a>
+        <a href="terms.html" class="hover-target">Terms</a>
+      </nav>
+      <a href="https://play.google.com/store/apps/details?id=com.bhaktimarg.app" class="nav-btn-dark hover-target" target="_blank">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <path d="M19.7,19.2L4.3,35.3c0,0,0,0,0,0c0.5,1.7,2.1,3,4,3c0.8,0,1.5-0.2,2.1-0.6l0,0l17.4-9.9L19.7,19.2z" fill="#EA4335"></path>
+            <path d="M35.3,16.4L35.3,16.4l-7.5-4.3l-8.4,7.4l8.5,8.3l7.5-4.2c1.3-0.7,2.2-2.1,2.2-3.6C37.5,18.5,36.6,17.1,35.3,16.4z" fill="#FBBC04"></path>
+            <path d="M4.3,4.7C4.2,5,4.2,5.4,4.2,5.8v28.5c0,0.4,0,0.7,0.1,1.1l16-15.7L4.3,4.7z" fill="#4285F4"></path>
+            <path d="M19.8,20l8-7.9L10.5,2.3C9.9,1.9,9.1,1.7,8.3,1.7c-1.9,0-3.6,1.3-4,3c0,0,0,0,0,0L19.8,20z" fill="#34A853"></path>
+          </g>
+        </svg>
+        Get App
+      </a>
     </header>
 
-    <div class="bento-card">
-        <h2><div class="icon-box">🖼️</div> Instant Darshan Updates</h2>
-        <p>We utilize a highly optimized edge network for Daily Darshan. The app does not constantly drain your battery checking the internet. Instead, when a new Darshan is uploaded, you receive a silent push notification that prepares the images for you instantly.</p>
-    </div>
+    <main class="hero">
+      <div class="hero-content">
+        <div class="badge">Your Digital Spiritual Companion</div>
+        <h1>Deepen your <em>naam jap</em> with daily devotion.</h1>
+        <p class="lede">
+          Experience daily darshan, mindful chanting, sacred scriptures, and
+          spiritual milestones in one beautifully peaceful space.
+        </p>
 
-    <div class="bento-card">
-        <h2><div class="icon-box">📿</div> The Digital Mala Engine</h2>
-        <p>The Mala screen registers a Jap anywhere you tap on the screen. To help you maintain inner focus without looking at your phone, the device provides a subtle haptic vibration per tap. Upon reaching the 108 threshold, the vibration pattern changes distinctly.</p>
-    </div>
+        <div class="hero-actions">
+          <a href="https://play.google.com/store/apps/details?id=com.bhaktimarg.app" target="_blank" class="btn btn-primary hover-target">
+            <svg style="width: 1.2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path d="M19.7,19.2L4.3,35.3c0,0,0,0,0,0c0.5,1.7,2.1,3,4,3c0.8,0,1.5-0.2,2.1-0.6l0,0l17.4-9.9L19.7,19.2z" fill="#EA4335"></path>
+                <path d="M35.3,16.4L35.3,16.4l-7.5-4.3l-8.4,7.4l8.5,8.3l7.5-4.2c1.3-0.7,2.2-2.1,2.2-3.6C37.5,18.5,36.6,17.1,35.3,16.4z" fill="#FBBC04"></path>
+                <path d="M4.3,4.7C4.2,5,4.2,5.4,4.2,5.8v28.5c0,0.4,0,0.7,0.1,1.1l16-15.7L4.3,4.7z" fill="#4285F4"></path>
+                <path d="M19.8,20l8-7.9L10.5,2.3C9.9,1.9,9.1,1.7,8.3,1.7c-1.9,0-3.6,1.3-4,3c0,0,0,0,0,0L19.8,20z" fill="#34A853"></path>
+              </g>
+            </svg>
+            Download Now
+          </a>
+          <a href="app_guide.html" class="btn btn-glass hover-target">Explore App Guide</a>
+        </div>
 
-    <div class="bento-card">
-        <h2><div class="icon-box">🔥</div> Auto-Healing Streaks</h2>
-        <p>Your daily streak updates automatically at Midnight. If you acquire a new phone, simply connect your Google Account in the Cloud Vault tab. Our system will download your backup and restore your timeline, ensuring your unbroken devotion continues.</p>
-    </div>
+        <div class="contact-info">
+          Questions? Contact us at
+          <a class="hover-target" href="mailto:support.bhaktimarg@gmail.com">support.bhaktimarg@gmail.com</a>
+        </div>
+      </div>
 
-    <div class="bento-card">
-        <h2><div class="icon-box">🔒</div> App PIN & Security</h2>
-        <p>If you forget your App PIN, tapping 'Forgot PIN' prompts a Biometric check. If no biometrics are set up, it will trigger an Emergency Factory Reset to protect your privacy. You can then safely restore your data from your Cloud Vault.</p>
-    </div>
+      <!-- 3D Interactive Phone -->
+      <div class="phone-container">
+        <div class="phone hover-target" id="phoneBox">
+          <div class="app-screen"></div>
+        </div>
+      </div>
+    </main>
 
-    <div class="bento-card">
-        <h2><div class="icon-box">📖</div> Managing Scriptures</h2>
-        <p>The 'My Paath' library organizes sacred texts into categories. You can download texts directly or upload your own local PDFs. Our engine is highly optimized, but exceptionally large PDFs may take a moment to load depending on your device's memory.</p>
-    </div>
+    <script>
+      // 1. Sharp Physics Cursor
+      const diamond = document.querySelector(".cursor-diamond");
+      const ring = document.querySelector(".cursor-ring");
+      const hoverTargets = document.querySelectorAll(".hover-target, a, button");
 
-    <div class="bento-card">
-        <h2><div class="icon-box">☁️</div> Background Cloud Sync</h2>
-        <p>If Cloud Vault is active, the app attempts to silently secure your data every 24 hours. However, strict Battery Savers (like those on Xiaomi or Samsung devices) may delay this background sync until you wake up and unlock your phone in the morning.</p>
-    </div>
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
 
-    <footer>
-        <p>🌸 Made with ❤️ at the lotus feet of Shri Radha Rani 🌸</p>
-    </footer>
-</div>
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        // Diamond snaps instantly
+        diamond.style.transform = `translate(${mouseX}px, ${mouseY}px) rotate(45deg)`;
+      });
 
-</body>
+      const renderCursor = () => {
+        // Lerp for smooth trailing effect on the ring
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+        ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+        requestAnimationFrame(renderCursor);
+      };
+      requestAnimationFrame(renderCursor);
+
+      // Hover state expansions
+      hoverTargets.forEach((target) => {
+        target.addEventListener("mouseenter", () => {
+          ring.style.width = "48px";
+          ring.style.height = "48px";
+          ring.style.background = "rgba(255,255,255,0.05)";
+          ring.style.borderColor = "rgba(255,255,255,0.4)";
+          diamond.style.background = "#E4F4E4"; // Pastel hint
+        });
+        target.addEventListener("mouseleave", () => {
+          ring.style.width = "36px";
+          ring.style.height = "36px";
+          ring.style.background = "transparent";
+          ring.style.borderColor = "rgba(255,255,255,0.3)";
+          diamond.style.background = "#FFFFFF";
+        });
+      });
+
+      // 2. 3D Phone Tilt Effect
+      const phoneBox = document.getElementById("phoneBox");
+      document.addEventListener("mousemove", (e) => {
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+        phoneBox.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+      });
+
+      document.addEventListener("mouseleave", () => {
+        phoneBox.style.transform = `rotateY(0deg) rotateX(0deg)`;
+      });
+    </script>
+  </body>
 </html>
